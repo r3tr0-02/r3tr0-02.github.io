@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<!-- Head start -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/title.png">
+    <title>4th Post</title>
+        
+    <!-- Script init -->
+    <script src="assets/main.bundle.js" defer=""></script>
+    <script src="assets/second.bundle.js"></script>
+    <!-- Style init -->
+    <link rel="stylesheet" href="assets/main.bundle.css">
+    <link rel="stylesheet" type="text/css" href="assets/second.bundle.css">
+</head>
+
+<!-- Website start -->
+<body hx-boost="true" class="" x-data="">
+    <!-- top nav bar -->
+    <div class="flex flex-col min-h-screen">
+        <nav id="nav1">
+            <div class="container py-4 space-x-2">
+                <a class="font-mono" href="/.html/retr0_dev/">Home</a> &nbsp;
+
+                <a class="font-mono" href="/.html/retr0_dev/archive.html"><b>Archive</b></a> &nbsp;
+
+                <a class="font-mono" href="/.html/retr0_dev/studies.html">Studies</a> &nbsp;
+
+                <a class="font-mono" href="/.html/retr0_dev/project.html">Projects</a> &nbsp;
+                
+                <button  class="font-mono" style="float: right;" onclick="dark_mode()">Dark mode</button>
+            </div>
+        </nav>
+
+    <!-- title bar -->
+        <div class="flex-grow">
+            <section>
+                <div class="container py-8 my-4 bg-black">
+                    <h1 class="font-mono text-[64px] text-white">/archive/4_post</h1>
+                </div>
+            </section>
+    <!-- title bar -->
+            <div class="flex-grow container py-8 font-mono maintext">
+                <div class="markdown-body">
+                    <p> Permalink : www/.html/retr0_dev/posts/4_post.html </p>
+                    <p> Post date :  Wed Feb 16 2022 1400 </p>
+                    <h1> "Editing transform location in AE" </h1>
+                    
+                    <p>Greeting fellow modders ( and potential M lover), it is i Choccy Milk here making a tutorial about transform
+                        file. Now what is a transform file?, as the name suggest transform file transform the mesh into a specific
+                        location, rotation and scale. Now transform file by far is not something easy, its hard, painful and you will
+                        feel like you wanna break that precious vase that cost 90 billion dollar or you really just wanna go monke.
+                    </p>
+
+                    <p>Requirement:</p>
+                    <ol>
+                        <li><a href="https://notepad-plus-plus.org/" class="externalURL" target="_blank">
+                            A decent text editor</li>
+                        <li><a href="https://github.com/DerPopo/UABE/releases" class="externalURL" target="_blank">
+                            UnityAssetBundleExtractor (UABE)</a></li>
+                        <li><a href="https://github.com/Perfare/AssetStudio/releases" class="externalURL" target="_blank">
+                            AssetStudioGUI</a></li>
+                        <li><a href="https://download.blender.org/release/Blender2.79/" class="externalURL" target="_blank">
+                            Blender 2.79</a></li>
+                        <li>Knowledge.</li>
+                    </ol>
+
+                    <!-- First Step -->
+                    <h2> First step : </h2>
+                    <p>
+                        Get an asset file that Supports Transform files, usually this is commonly found on Parts that support
+                        attachment. As you can see in the picture i use the SA-58 EXT duty Receiver since it has mod_scope that i
+                        want to tinker around.
+                    </p>
+                    <center>
+                        <p><img src="https://img.guildedcdn.com/ContentMedia/071931178ab667bf203f15995d9bc5f7-Full.webp"
+                            alt="071931178ab667bf203f15995d9bc5f7-Full.webp" class="" width="900" height="900">
+                        </p>
+                    </center>
+                    <br><br>
+                    <p>
+                        Now you want to look for the GameObject you want to tinker around, mine would be mod_scope since it only
+                        support scope attachment.
+                        <br><br>
+                        Go see the preview tab and copy the SInt64 m_PathID number, after that you paste it into the search bar and
+                        you should find the transform related to it.
+                    </p>
+                    <center>
+                        <p><img src="https://img.guildedcdn.com/ContentMedia/f9562233ddad6d36eb49c8c10da942a1-Full.webp"
+                            alt="f9562233ddad6d36eb49c8c10da942a1-Full.webp" class="">
+                        </p>
+                        <p><img src="https://img.guildedcdn.com/ContentMedia/3dded33a8bdab2b44369bf22bdff00c7-Full.webp"
+                            alt="3dded33a8bdab2b44369bf22bdff00c7-Full.webp" class="">
+                        </p>
+                    </center>
+                    <br><br>
+                    <p>
+                        Open UABE and open the asset file you picked (make sure to decompress it), now find the ID of that transform
+                        file and then export the dump to an easy access folder (name it so you can remember it later)
+                    </p>
+                    <center>
+                        <p><img src="https://img.guildedcdn.com/ContentMedia/509ffc3e8e06a2b215d293d0d28bb55a-Full.webp"
+                            alt="509ffc3e8e06a2b215d293d0d28bb55a-Full.webp" class="">
+                        </p>
+                    </center>
+                    <br><br>
+                    <p>feeling a bit confused and tedious?, well that's only the first part</p>
+
+                    <!-- Second Step -->
+                    <h2> Step two : </h2>
+                    <p>
+                        Go into your ASGui, select Scene Hierarchy, select the CAB-blablabla, and then checked the box. After
+                        checking it, go to model option and select export selected object (merge), Save the FBX in a easy access
+                        folder (preferably in desktop).
+                    </p>
+                    <center>
+                        <p><img src="https://img.guildedcdn.com/ContentMedia/f14183170d42353e541f6ea4052125a4-Full.webp"
+                            alt="f14183170d42353e541f6ea4052125a4-Full.webp" class=""></p>
+                    </center>
+                    <br><br>
+                    <p>
+                        Get a scope bundle of your own choosing, and do the previous step for it.
+                        <br><br>
+                    </p>
+                    <!-- Third Step -->
+                    <h2> Step three : </h2>
+                    <p>
+                        Open blender, go to the File menu on the top left corner, select import and then import both the merged
+                        scope and Receiver FBX file.
+                        <br><br>
+                        After importing it, the Model will be SMALL keep that in mind when you're importing stuff. Go to the object
+                        properties and set the scale on XYZ to 1 for both of them.
+                    </p>
+                    <p>Okay you got everything set up, now comes the difficult part or easy (depends honestly).</p>
+
+                    <!-- Forth Step -->
+                    <h2> Step four : </h2>
+                    <p>
+                        Grab your Exported Mod_scope Transform file, now take a look at the m_LocalPosition (mine is edited so yours
+                        will be different).
+                    </p>
+                    <center>
+                        <p><img src="https://img.guildedcdn.com/ContentMedia/5df40eea61d6fd5defdfdb76247598e0-Full.webp"
+                            alt="5df40eea61d6fd5defdfdb76247598e0-Full.webp" class="">
+                        </p>
+                    </center>
+                    <p>
+                        Back to Blender, select the Scope model, go to Object Constraint properties, select child of, target the
+                        Receiver armature, and then target the mod_scope bone.
+                    </p>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/a650bef83565720d7f278e45239de7af-Full.webp"
+                        alt="a650bef83565720d7f278e45239de7af-Full.webp" class="">
+                    </center>
+                    <br><br>
+                    <p>
+                        Select the Receiver Armature, then from the dropdown of Object mode select Edit Mode. select the mod_scope
+                        Bones, and go to Bones Properties.
+                        <br><br>
+                        Here you can see a value for both Head and Tails. Move the mod_scopes bones to your desireable position,
+                        press tab to update the attachment position. You only need to copy the value from the Head XYZ.
+                        <br><br>
+                        Alternatively you can go into pose mode, move the bone to your wanted position, CTRL + A and select
+                        <em><strong>Apply Pose as Rest Pose</strong></em> and check back the bone properties.
+                    </p>
+                    <br><br>
+                    <center>
+                        <img src="https://hub.sp-tarkov.com/attachment/1997-changes-png/?thumbnail=1">
+                    </center>
+                    <br><br>
+                    <p>
+                        Now copy the XYZ value from head into the transform.
+                    </p>
+                    <center>
+                        <img src="https://hub.sp-tarkov.com/attachment/1998-punch-png/">
+                    </center>
+                    <br><br>
+                    <!-- Fifth Step -->
+                    <h2> Step five : </h2>
+                    <p>
+                        Import back the transform dump after assigning the new value.
+                    </p>
+                    <p>
+                        After importing, copy the file to its original place, since we are using the Receiver of SA58, put it back
+                        in the Receiver bundle, overwrite the files, launch SPT up and voila, your changes has been made.
+                    </p>
+                    <br><br>
+                    <center>
+                        <img src="https://hub.sp-tarkov.com/attachment/1999-result-png/?thumbnail=1">
+                    </center>
+                    <br><br>
+                    <p>haha scope place go brrrrr</p>
+                    <br><br>
+                    <br><br>
+                    <br><br>
+                    <p>Notes:</p>
+                    <p>
+                        - Transform on gun will only change if you edit the container bundle. Client Assets bundle won't affect
+                        transform changes.
+                        <br><br>
+                        - Changes of transform file to Container bundle will reset after gun is drawn, this is an issue with animation
+                        clip.
+                        <br><br>
+                        - If your custom animation modify the placement on idle animation eg. Scope, bullet and other stuff. First
+                        grab the client assets of the gun you're animating, open it with ASGui, go to scene hierarchy, expand the
+                        box that ends in _model, expand weapon root, weapon root anim, Tick the weapon box, go to model and export
+                        selected object (merge). Do the steps of changing bones again and then import the new transform. This way
+                        your gun will have consistency on the positioning. MAKE SURE TO USE THE TRANSFORM FROM CONTAINER BUNDLE 
+                        NOT CLIENT ASSETS BUNDLE (Container bundle will have duplicate game object [it's for different animator],
+                        find the correct one)
+                        <br><br>
+                        - Rotation value are difficult and it's different than position value.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bottom nav bar -->
+    <nav class="bottom-0 font-mono footer" id="nav2">
+        <div class="container py-4 space-x-2">
+            <br>
+
+            <a class="font-normal space-x-2" href="https://www.facebook.com/r3tr0.02/" style="margin-left: 0;" target="_blank">Facebook</a>&nbsp; &nbsp;
+            
+            <a class="font-normal space-x-2" href="https://instagram.com/r3tr0_02" style="margin-left: 0;" target="_blank">Instagram</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="https://twitter.com/r3tr0_02" style="margin-left: 0;" target="_blank">Twitter</a>&nbsp; &nbsp;
+
+            <button id="demo" onclick="discord_id()">Discord</button>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="https://youtube.com/channel/UCg--HMbkAcL8Vs-NphrWqew" style="margin-left: 0;" target="_blank">Youtube</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="https://github.com/r3tr0-02" style="margin-left: 0;" target="_blank">GitHub</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="mailto:r3tr0_02@protonmail.com" style="margin-left: 0;" target="_blank">Email</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="https://www.linkedin.com/in/amirul-fikri" style="margin-left: 0;" target="_blank">LinkedIn</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="/.html/retr0_dev/home_qr.html" style="margin-left: 0;" target="_blank">QOTD</a>&nbsp; &nbsp;
+            <br>
+            <span style="font-size: 96px; margin-left: 0;"> retr0.dev </span>
+            <br>
+            <p style="font-size: 10px;">inspirated from kiobu.dev (Thank you kiobu kekw)</p>
+        </div>
+    </nav>
+</body>
+</html>

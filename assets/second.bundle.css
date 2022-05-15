@@ -1,0 +1,51 @@
+.htmx-indicator{opacity:0;transition: opacity 200ms ease-in;}
+.htmx-request .htmx-indicator{opacity:1}
+.htmx-request.htmx-indicator{opacity:1}
+
+p{
+    font-size: 12px;
+}
+body{
+    background-color: white;
+    color: black;
+}
+#nav1{
+    border-bottom: 1px solid black;
+}
+#nav2{
+    border-top: 1px solid black;
+}
+.dark-mode{
+    background-color: black;
+    color: white;
+}
+.dark-mode-markdown-body h1{
+    background-color: black;
+    color: white;
+}
+.dark-mode-markdown-body h2{
+    background-color: black;
+    color: white;
+}
+.dark-mode-markdown-body li{
+    background-color: black;
+    color: white;
+}
+.dark-mode-markdown-body p{
+    background-color: black;
+    color: white;
+}
+.dark-mode div.container.py-8.my-4.bg-black{
+    background-color: white;
+}
+.dark-mode h1.font-mono.text-\[64px\].text-white{
+    background-color: white;
+    color: black;
+}
+.dark-mode #nav1{
+    border-bottom: 1px solid white;
+}
+.dark-mode #nav2{
+    border-top: 1px solid white;
+}
+        

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<!-- Head start -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/title.png">
+    <title>3rd Post</title>
+
+    <!-- Script init -->
+    <script src="assets/main.bundle.js" defer=""></script>
+    <script src="assets/second.bundle.js"></script>
+    <!-- Style init -->
+    <link rel="stylesheet" href="assets/main.bundle.css">
+    <link rel="stylesheet" type="text/css" href="assets/second.bundle.css">
+</head>
+
+<!-- Website start -->
+<body hx-boost="true" class="" x-data="">
+    <!-- top nav bar -->
+    <div class="flex flex-col min-h-screen">
+        <nav id="nav1">
+            <div class="container py-4 space-x-2">
+                <a class="font-mono" href="/.html/retr0_dev/">Home</a> &nbsp;
+
+                <a class="font-mono" href="/.html/retr0_dev/archive.html"><b>Archive</b></a> &nbsp;
+
+                <a class="font-mono" href="/.html/retr0_dev/studies.html">Studies</a> &nbsp;
+
+                <a class="font-mono" href="/.html/retr0_dev/project.html">Projects</a> &nbsp;
+                
+                <button  class="font-mono" style="float: right;" onclick="dark_mode()">Dark mode</button>
+            </div>
+        </nav>
+
+    <!-- title bar -->
+        <div class="flex-grow">
+            <section>
+                <div class="container py-8 my-4 bg-black">
+                    <h1 class="font-mono text-[64px] text-white">/archive/3_post</h1>
+                </div>
+            </section>
+    <!-- content bar -->
+            <div class="flex-grow container py-8 font-mono maintext">
+                <div class="markdown-body">
+                    <p> Permalink : www/.html/retr0_dev/posts/3_post.html </p>
+                    <p> Post date :  Wed Feb 16 2022 1310 </p>
+                    <h1> "Mesh swapping in AE" </h1>
+                    
+                    <center>
+                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Ew-wRmW-SfE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </center>
+                    <br><br>
+
+                    <p><br>What we are going to do, is edit base gamefile meshes of the crowbar, to turn it into a really cool cube.</p>
+                
+                    <p>This tutorial can also be applied for other meshes/models/bundles, it is not limited to the crowbar.</p>
+                
+                    <p>You may not be able to export a mesh file, sometimes you may get lucky and be able to extract LOD1 but not
+                        LOD0 for example.
+                        At the very least, try and find a mesh file you can export so that you know the scale and orientation.
+                        (Maybe you can't export the crowbar, so try exporting another melee weapon such as the knife and use the
+                        knife as the base;
+                        but just replace the crowbar in stead. The method is the same.</p>
+                
+                    <p>Trial and error! You won't get it perfect every time. Also, edit the mesh directly as edits to the object
+                        will not reflect in the export.
+                        E.G If you want to scale it down, go into edit mode and change the scale in there. Same goes for rotation.
+                    </p>
+
+                    <p>Requirements : </p>
+                    <ul>
+                        <li><a href="https://unity3d.com/unity/qa/lts-releases?version=2018.4" class="externalURL" target="_blank">
+                            Unity LTS Release 2018.4.26f1</a> (Get the Unity Editor Download Assistant)</li>
+
+                        <li><a href="https://download.blender.org/release/Blender2.79/" class="externalURL" target="_blank">
+                            Blender 2.79</a></li>
+                        
+                        <li><a href="https://github.com/DerPopo/UABE/releases" class="externalURL" target="_blank">
+                            UnityAssetBundleExtractor (UABE)</a></li>
+                    </ul>
+
+                    <h1>How to start?</h1>
+
+                    <!-- First step -->
+                    <h2> First step: Finding the weapon textures bundle files. </h2>
+
+                    <p><br>For this, go in your gamedir
+                        GameDir\EscapeFromTarkov_Data\StreamingAssets\Windows\assets\content\weapons\crowbar\ and copy the file
+                        client_assets.bundle to a backup folder inside the same folder.
+                        Then make a folder wherever you want and copy paste the same file in there too for ease of use.
+                    </p>
+
+                    <!-- Second step -->
+                    <h2> Step two : Extracting the desired texture file. </h2>
+
+                    <p><br>For this step, we will use AssetBundleExtractor.
+                        Open AssetBundleExtractor.exe where you extracted it, you should have this window open after Click on File -&gt;
+                        Open and select client_assets.bundle in your folder and click "open".<br>
+                    </p>
+
+                    <center>
+                        <p>
+                            <img
+                            src="https://img.guildedcdn.com/ContentMedia/426ec21de2f806fa4b9ecea86b2c7d66-Full.webp"
+                            alt="426ec21de2f806fa4b9ecea86b2c7d66-Full.webp" class="">
+                        </p>
+                        <br><br>
+                        <p>
+                            <img src="https://img.guildedcdn.com/ContentMedia/4724cbf7edf33486d13c7ddd15d7aae7-Full.webp"
+                            alt="4724cbf7edf33486d13c7ddd15d7aae7-Full.webp" class="" width="900" height="900">
+                        </p>
+                        <br><br>
+                        <p>
+                            <img src="https://img.guildedcdn.com/ContentMedia/82d797e4ffab7049f3aa04a89bc11228-Full.webp"
+                            alt="82d797e4ffab7049f3aa04a89bc11228-Full.webp" class="">
+                        </p>
+                        <br><br>
+                    </center>
+                    
+                    <p>Click on "yes" and name the file to save like you want. I will call it extracted and save. After doing this,
+                        click on the "Info" box on the main window.
+                        <br>
+                    </p>
+
+                    <center>
+                        <p>
+                            <img src="https://img.guildedcdn.com/ContentMedia/7aff0e49d69af8c38e2cd2f46bbb15a4-Full.webp"
+                            width="900" height="900">
+                        </p>
+                        <br><br>
+                        <p>
+                            <img src="https://img.guildedcdn.com/ContentMedia/7aff0e49d69af8c38e2cd2f46bbb15a4-Full.webp"
+                            alt="7aff0e49d69af8c38e2cd2f46bbb15a4-Full.webp" class=""
+                            width="900" height="900">
+                        </p>
+                        <br><br>
+                        <p>
+                            <img src="https://img.guildedcdn.com/ContentMedia/362fcbe503c127b6411c95705e46e58e-Full.webp"
+                            alt="362fcbe503c127b6411c95705e46e58e-Full.webp" class="">
+                        </p>
+                        <br><br>
+                    </center>
+                    
+                    <p>and this window will pop up on the screen:<br>
+                        <center>
+                            <img src="https://img.guildedcdn.com/ContentMedia/5bfa9a77ea72bdafe45f95f7b9f65c5f-Full.webp"
+                            alt="5bfa9a77ea72bdafe45f95f7b9f65c5f-Full.webp" class="" width="900" height="900">
+                        </center>
+                    </p>
+
+                    <p>Find the mesh file located within and click 'Plugins', then export as dae. (Some models can't be exported yet
+                        with current version of exporter. But you can still try! Just skip the export step and import your model into
+                        blender.)<br>
+                        <center><img src="https://img.guildedcdn.com/ContentMedia/4fa28aa8db445b013a8b654cd59d8f8c-Full.webp"
+                            alt="4fa28aa8db445b013a8b654cd59d8f8c-Full.webp" class="">
+                        </center>
+                    </p>
+                    <p>Save it within the project folder that you've made, and then open it in blender.</p>
+
+                    <!-- Third step -->
+                    <h2> Step three: Edit the mesh file to the new mesh. </h2>
+
+                    <p><br>What you're going to want to do is import the model you've got made and overlay it over the model.<br>
+                        <center>
+                            <img src="https://img.guildedcdn.com/ContentMedia/0a6cc3eabd6f77605c057d1a02072fd0-Preview.webp"
+                        alt="0a6cc3eabd6f77605c057d1a02072fd0-Preview.webp" class="" width="900" height="900">
+                        </center>
+                    </p>
+                    <p>Change the material name of the model to m0mat.<br>
+                        <center>
+                            <img
+                            src="https://img.guildedcdn.com/ContentMedia/0d371459d6e1d684e48582c2692406ca-Full.webp"
+                            alt="0d371459d6e1d684e48582c2692406ca-Full.webp" class="">
+                        </center>
+                    </p>
+                    <p>Then export as .dae<br>
+                    <center>
+                        <img
+                            src="https://img.guildedcdn.com/ContentMedia/321b7b2cd20751af656d8219e7c1989c-Full.webp"
+                            alt="321b7b2cd20751af656d8219e7c1989c-Full.webp" class="">
+                    </center>
+                </p>
+
+                <!-- Forth step -->
+                <h2> Step four: Using unity to create the bundled mesh. </h2>
+
+                <p><br>Load up unity and create a new project.<br><br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/d6d7781646fba46fcd07321875dd21ff-Full.webp"
+                        alt="d6d7781646fba46fcd07321875dd21ff-Full.webp" class="" width="900" height="900">
+                    </center>
+                </p>
+                <p>Name it whatever you want.<br><br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/927645e3d3043d8bfe17432289a8d3be-Full.webp"
+                        alt="927645e3d3043d8bfe17432289a8d3be-Full.webp" class="" width="900" height="900">
+                    </center>    
+                </p>
+                <p>Import new asset. (The .dae you exported.)<br><br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/b4f013a38837f5d2c83782e0f967fec1-Full.webp"
+                        alt="b4f013a38837f5d2c83782e0f967fec1-Full.webp" class="">
+                    </center>    
+                </p>
+                <p>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/dc3dbd9537c9ae6ed77324d6f3500cf9-Full.webp"
+                        alt="dc3dbd9537c9ae6ed77324d6f3500cf9-Full.webp" class="" width="900" height="900">
+                    </center>
+                </p>
+                <p>Drag and drop the new model asset into the main window.<br><br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/91d0a342328cc965b02ea9aa1f8b27ca-Full.webp"
+                        alt="91d0a342328cc965b02ea9aa1f8b27ca-Full.webp" class="">
+                    </center>
+                </p>
+                <br><br>
+                <p>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/998622d155dc2339eee03f0c6c7e5fe8-Preview.webp"
+                        alt="998622d155dc2339eee03f0c6c7e5fe8-Preview.webp" class="" width="900" height="900">
+                    </center>
+                </p>
+                <p>Set the transforms and rotations to 0.<br><br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/9d240bed4d8d06d0d6c1a269e338b839-Full.webp"
+                        alt="9d240bed4d8d06d0d6c1a269e338b839-Full.webp" class="">
+                    </center>
+                </p>
+                <p>Now go to build settings.<br><br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/5b2ce1e16d6f9d4f1f72c8a9d6cc2525-Full.webp"
+                        alt="5b2ce1e16d6f9d4f1f72c8a9d6cc2525-Full.webp" class="">
+                    </center>
+                </p>
+                <p>Click 'Add open scenes'. If it asks for a save file name, call it whatever you want.<br><br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/19a316552242641eeb48bed15a146ea8-Full.webp"
+                        alt="19a316552242641eeb48bed15a146ea8-Full.webp" class="">
+                    </center>
+                </p>
+                <br><br>
+                <p>And then click 'Build', save it to your project folder and let it run.</p>
+
+                <!-- Fifth step -->
+                <h2> Step five: Opening your newly made bundle and exporting the raw mesh files. </h2>
+
+                <p><br>Now we have to use the Unity Asset Bundle Extractor all over again, except this time it's to export the raw
+                    mesh files from the bundle you just created. It's pretty much the exact same steps. Navigate to your project
+                    folder and open up 'bestmodelever_Data' or w/e you called the project.<br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/35c2faad0aea19cf3e92830ccddaf1a5-Full.webp"
+                        alt="35c2faad0aea19cf3e92830ccddaf1a5-Full.webp" class="">
+                    </center>
+                </p>
+                <p>Do the same as you did before, open the sharedassets0.assets file.<br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/7419fcb30a54fce8a19591a4ca9198cb-Full.webp"
+                        alt="7419fcb30a54fce8a19591a4ca9198cb-Full.webp" class="" width="900" height="900">
+                    </center>
+                </p>
+                <p>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/ccec2977356521ac356020797e49056f-Full.webp"
+                        alt="ccec2977356521ac356020797e49056f-Full.webp" class="">
+                    </center>
+                </p>
+                <p>And click 'Yes', name the unpacked file whatever you want, then click 'Info' again.<br>You should see the bundled
+                    mesh in here, mine is called 'cube' but it should be called whatever the name of the mesh was inside of blender
+                    before you exported it.<br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/c854ac4101df63186d64a12dedf3e667-Full.webp"
+                        alt="c854ac4101df63186d64a12dedf3e667-Full.webp" class="" width="900" height="900">
+                    </center>
+                </p>
+                <p>You want to click 'Export Raw' and save the file with the name of the LOD0, which in this case is
+                    weapon_gf_crowbar_LOD0<br>Then do the same with 'Export Dump' and save that file too with the same name until
+                    you have the two files located below.<br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/288b14249e4ae00dd858c53630f9f706-Full.webp"
+                        alt="288b14249e4ae00dd858c53630f9f706-Full.webp" class="">
+                    </center>
+                </p>
+                <p>Then open up the text file.<br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/a74f8d677e625ab332556707d832454f-Full.webp"
+                        alt="a74f8d677e625ab332556707d832454f-Full.webp" class="">
+                    </center>
+                </p>
+                <p>You'll notice the string m_Name is the same as the mesh file in blender. You could set this up ahead of time by
+                    renaming it to weapon_gf_crowbar_LOD0 in blender, but you can do it here too. (It's useful for replacing LOD1's
+                    as well, without having to re-export a whole new model bundle with that name; etc.)<br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/5679a4a5579b82404972a7b528a10ea8-Full.webp"
+                        alt="5679a4a5579b82404972a7b528a10ea8-Full.webp" class="">
+                    </center>
+                </p>
+
+                <!-- Sixth step -->
+                <h2> Step six: Replacing the mesh with our newly acquired exported mesh files! </h2>
+
+                <p><br>Open up another window of the unity extractor, go back to the crowbar unity asset bundle again and go through
+                    the same process until you're back at the info screen.<br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/1f9c2068a36a3540da27732d4338073d-Full.webp"
+                        alt="1f9c2068a36a3540da27732d4338073d-Full.webp" class="">
+                    </center>
+                </p>
+                <p>Click 'Import Raw' and then import the weapon_gf_crowbar_LOD0.dat file.<br>Then, click 'Import Dump' and then
+                    import the weapon_gf_crowbar_LOD0.txt file. (This makes sure it has the correct information/naming in the mesh
+                    data.)<br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/129bafe8aff48f5a59148c061747f8b8-Full.webp"
+                        alt="129bafe8aff48f5a59148c061747f8b8-Full.webp" class="">
+                    </center>
+                </p>
+                <p>And then click 'ok' at the bottom and click 'yes' to save changes.<br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/da997372da778ab106e07273290551ac-Full.webp"
+                        alt="da997372da778ab106e07273290551ac-Full.webp" class="">
+                    </center>
+                </p>
+                <p>Then go to 'File' and 'Save'. Save the file as client_assets.bundle to your project folder.<br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/a41d923a10b1845f55e17cbdb43676ea-Full.webp"
+                        alt="a41d923a10b1845f55e17cbdb43676ea-Full.webp" class="">
+                    </center>
+                </p>
+                <p>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/0d668b492ecbd807016733eb7972a29a-Full.webp"
+                        alt="0d668b492ecbd807016733eb7972a29a-Full.webp" class="" width="900" height="900">
+                    </center>
+                </p>
+                <p>Once it's saved, simply replace the client_assets.bundle in your crowbar bundles folder with the one in your
+                    project folder.<br>
+                    <center>
+                        <img src="https://img.guildedcdn.com/ContentMedia/ce339baa49714b816bd2fb6e5733f385-Full.webp"
+                        alt="ce339baa49714b816bd2fb6e5733f385-Full.webp" class="" width="900" height="900">
+                    </center>
+                </p>
+
+                <!-- Seventh Step -->
+                <h2> Step seven Launch the game! </h2>
+                <p>Now that every step of this tutorial is done, you can essentially start the game, and see the new mesh in game.
+                    (Though it'll be using the original textures, unless you replace those too.)<br>Follow the tutorial for texture
+                    replacement in the same fashion as you do normally.
+                </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bottom nav bar -->
+    <nav class="bottom-0 font-mono footer" id="nav2">
+        <div class="container py-4 space-x-2">
+            <br>
+
+            <a class="font-normal space-x-2" href="https://www.facebook.com/r3tr0.02/" style="margin-left: 0;" target="_blank">Facebook</a>&nbsp; &nbsp;
+            
+            <a class="font-normal space-x-2" href="https://instagram.com/r3tr0_02" style="margin-left: 0;" target="_blank">Instagram</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="https://twitter.com/r3tr0_02" style="margin-left: 0;" target="_blank">Twitter</a>&nbsp; &nbsp;
+
+            <button id="demo" onclick="discord_id()">Discord</button>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="https://youtube.com/channel/UCg--HMbkAcL8Vs-NphrWqew" style="margin-left: 0;" target="_blank">Youtube</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="https://github.com/r3tr0-02" style="margin-left: 0;" target="_blank">GitHub</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="mailto:r3tr0_02@protonmail.com" style="margin-left: 0;" target="_blank">Email</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="https://www.linkedin.com/in/amirul-fikri" style="margin-left: 0;" target="_blank">LinkedIn</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="/.html/retr0_dev/home_qr.html" style="margin-left: 0;" target="_blank">QOTD</a>&nbsp; &nbsp;
+            <br>
+            <span style="font-size: 96px; margin-left: 0;"> retr0.dev </span>
+            <br>
+            <p style="font-size: 10px;">inspirated from kiobu.dev (Thank you kiobu kekw)</p>
+        </div>
+    </nav>
+</body>
+</html>
