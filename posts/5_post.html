@@ -45,10 +45,53 @@
                 <div class="markdown-body">
                     <p> Permalink : www/retr0_dev/posts/5_post.html </p>
                     <p> Post date :  Fri Mar 24 2023 0339 </p>
-                    <h1> "test" </h1>
+                    <p> Upd. date :  Fri May 26 2023 0159 </p>
+                    <h1> "Crypto paper Section C proofing + Update on life" </h1>
                     
-                    <p>test</p>
-                    <p>i will be putting something here in future lol</p>
+                    <p>First of all, we will be discussing on Asymmetric , Public Key Encryption : RSA.</p>
+                    <p>So, how RSA works? : </p>
+                    <br>
+                    <p>We will need two (very) long prime numbers ; <span style="font-family:'Courier New'">p and q</span></p>
+                    <p>For the sake of simplicity, we will choose 3 and 11 as our prime number. Also, these numbers must be kept secret.</p>
+                    <br>
+                    <p>Now, we will calculate <span style="font-family:'Courier New'">n = p * q</span></p>
+                    <p><span style="font-family:'Courier New'">n = 3 * 11 = 33</span></p>
+                    <br>
+                    <p>n value should be made public.</p>
+                    <p>Now, we will calculate what we call the totient funct. from Euler : <span style="font-family:'Courier New'">φ(n) = (p-1)(q-1)</span></p>
+                    <p><span style="font-family:'Courier New'">φ(n) = (3 - 1)(11 - 1) = (2)(10) = 20</span></p>
+                    <br>
+                    <p>Next, we can derive the public key from this equation : <span style="font-family:'Courier New'">e, with gcd(φ(n), e) = 1 ; 1 < e < φ(n)</span></p>
+                    <p>e value should be made public since it's public key. This key is used to encrypt messages, on sender side.</p>
+                    <p><span style="font-family:'Courier New'">Let's say hypothetically e = 7 </span></p>
+                    <br>
+                    <p>Next, we can derive the private key from this equation : <span style="font-family:'Courier New'">d = e^-1 (mod φ(n))</span></p>
+                    <p>If value of e or d is already derived, then this equation should be used : <span style="font-family:'Courier New'">de mod φ(n) = 1</span>. Using simple algebra, we need to find values of e or d that conform to this equation.</p>
+                    <p><span style="font-family:'Courier New'">de mod φ(n) = 1 ; d(7) mod 20 = 1 ; (3)(7) mod 20 = 1 ; d = 3</span></p>
+                    <br>
+                    <p>d value must be kept private as it is the key to decrypt messages that was encrypted by the public key, on receiver side.</p>
+                    <br><br>
+                    <h2>Now... lets see the question on my final paper, Semester 2 2022/2023.</h2>
+                    <p><span style="font-family:'Courier New'">p = 61 ; q = ? ; n = 3233 ; e = 17 ; d = ?</span></p>
+                    <br>
+                    <p>So we plug in our previous equations (with simple algebra): </p>
+                    <p><span style="font-family:'Courier New'">n = p * q ; 3233 = 61 * q ; q = 3233 / 61 = 53 </span></p>
+                    <p><span style="font-family:'Courier New'">φ(n) = (p - 1)(q - 1) = (61-1)(53-1) = (60)(52) = 3120 </span></p>
+                    <p><span style="font-family:'Courier New'">e has already derived = 17</span></p>
+                    <p><span style="font-family:'Courier New'">de mod φ(n) = 1 ; d(17) mod 3120 = 1 ; (2753)(17) mod 3120 = 1 ; d = 2753</span></p>
+                    <br>
+                    <p>Now, here where is the problem with large numbers calc. By the rule, in order to encrypt message : <span style="font-family:'Courier New'">Ct = M^e mod n</span> and to decrypt message : <span style="font-family:'Courier New'">M = Ct^d mod n</span></p>
+                    <br>
+                    <p>Following the rule, given a <span style="font-family:'Courier New'">Ct = 2790</span>, the equation should be : <span style="font-family:'Courier New'">M = 2790^2753 mod 3120</span></p>
+                    <p>That will yield : <span style="font-family:'Courier New'">5.6023677355623908532752104320819e+9485 mod 3120</span>. That is obviously a comically large number for a Casio fx-570MS calculator to calculate. During the exam, it returned MATH ERROR.</p>
+                    <br>
+                    <p>However, continuing to mod the number, we get seemingly small value : 65</p>
+                    <p>In symm. dec. , we are taught to use alphabetic-numerical table to derive the plaintext (0=A, 1=B, 2=C,...), but the value derived from the decryption process is not a garbage value either.</p>
+                    <p>Instead, it corresponds to <b>" A "</b> ; using ASCII value and convert it to text.</p>
+                    <br>
+                    <p>To conclude, I still don't understand, why do large numbers are used for the derivation of the private key. There is probably a mishap in the making of the question itself. It's not thought through thoroughly.
+                        The calculation of power on large numbers is simply not possible on simple calculators.</p>
+                    <p>However, I do appreciate that I (might) be the first to crack the Ct, if not.</p>
                 </div>
             </div>
         </div>
