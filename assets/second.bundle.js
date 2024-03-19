@@ -2,7 +2,7 @@
 function discord_id()
 {
     // Local var data type assignment
-    var txt1 = "retr0#3244";
+    var txt1 = "retr0.bat";
     var txt2 = "Discord";
     var elem = document.getElementById("demo");
 
