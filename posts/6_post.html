@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<!-- Head start -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/title.png">
+    <title>5th Post</title>
+        
+    <!-- Script init -->
+    <script src="assets/main.bundle.js" defer=""></script>
+    <script src="assets/second.bundle.js"></script>
+    <!-- Style init -->
+    <link rel="stylesheet" href="assets/main.bundle.css">
+    <link rel="stylesheet" type="text/css" href="assets/second.bundle.css">
+</head>
+
+<!-- Website start -->
+<body hx-boost="true" class="" x-data="">
+    <!-- top nav bar -->
+    <div class="flex flex-col min-h-screen">
+        <nav id="nav1">
+            <div class="container py-4 space-x-2">
+                <a class="font-mono" href="/index.html">Home</a> &nbsp;
+
+                <a class="font-mono" href="/archive.html"><b>Archive</b></a> &nbsp;
+
+                <a class="font-mono" href="/studies.html">Studies</a> &nbsp;
+
+                <a class="font-mono" href="/experience.html">Experience</a> &nbsp;
+
+                <a class="font-mono" href="/project.html">Projects</a> &nbsp;
+                
+                <button  class="font-mono" style="float: right;" onclick="dark_mode()">Dark mode</button>
+            </div>
+        </nav>
+
+    <!-- title bar -->
+        <div class="flex-grow">
+            <section>
+                <div class="container py-8 my-4 bg-black">
+                    <h1 class="font-mono text-[64px] text-white">/archive/6_post</h1>
+                </div>
+            </section>
+    <!-- title bar -->
+            <div class="flex-grow container py-8 font-mono maintext">
+                <div class="markdown-body">
+                    <p> Permalink : www/retr0_dev/posts/6_post.html </p>
+                    <p> Post date :  Fri Mar 22 2024 2159 </p>
+                    <p> Upd. date :  Sat May 23 2024 0143 </p>
+                    <h1> "rawSEC RENTAS \"Unofficial\" Crypto Write-up" </h1>
+
+                    <h2>Railtwist</h2>
+                    <p>***"Don't seek truth in the wrong place; should you be reminded of what is right and tempered." * **</p>
+
+                    <p>We are going to look into how did I (tried but alas failed) to tackle this (Hard but smartly crafted and deceiving) CTF question by rawSEC rentas.</p>
+                    <p><b><u>DISCLAIMER : I did not join this CTF, but all intel was given by [redacted] from [redacted] team. I was merely curious and enlighten to help solve the question
+                            and no actual exchange of solution or work to solution was given to [redacted].
+                        </u></b>
+                    </p>
+                    <p>Alright, let's get this bread (LGBT)</p>
+                    <ul>
+                        <li><b>Table of Contents</b></li>
+                        <li><a href="#init">Init.</a></li>
+                        <li><a href="#contents">Contents</a></li>
+                        <li><a href="#attempt">1st attempt on cryptanalysis</a></li>
+                        <ul>
+                            <li><a href="#attempt-cipher">"cipher.pdf"</a></li>
+                            <li><a href="#attempt-key">"key.txt"</a></li>
+                            <li><a href="#attempt-railfence">"railfence"</a></li>
+                        </ul>
+                        <li><a href="#solution">Post-Init. Cryptanalysis and Official Solution</a></li>
+                        <li><a href="#re-solution">Third-Party Re-production and Verification</a></li>
+                        <li></li>
+                    </ul>
+                    <br><br><br>
+
+                    <h4 id="init">Init.</h4>
+                    <table border="0">
+                        <tr>
+                            <td><img src="https://cdn.discordapp.com/attachments/901750608078463026/1220737462209347695/image.png?ex=6610075b&is=65fd925b&hm=acb34fd720214633a30f35a3825ca0436e1ac4cdf521baebd0053fd5e25e9387&">
+                            </td>
+                            <td><img src="https://cdn.discordapp.com/attachments/901750608078463026/1220739131185958933/image.png?ex=661008e9&is=65fd93e9&hm=d7954e937884fbbb8aafb149df42f3bd5171bb1537e0bdd9a29f5dc541f9eb1f&">
+                            </td>
+                        </tr>
+                    </table>
+                    <p>A "railtwist.zip" file was given. Inside the archive, there are three files named "railfence", "key.txt", "cipher.pdf"</p>
+                    <p>All files including the archive was hashed early on to preserve its integrity throughout cryptanalysis.</p>
+                    <br>
+
+                    <h4 id="contents">Contents</h4>
+                    <p>Here is the content of "cipher.pdf" when opened using Adobe Acrobat PDF Viewer. We will go back to this file name soon.</p>
+                    <img src="https://cdn.discordapp.com/attachments/901750608078463026/1220742626517712946/image.png?ex=66100c2a&is=65fd972a&hm=15db8b3fe98032304294d2b8ad720bcb335eba19d8d26b7ae9fd58c2166b6334&" height="600" width="450">
+                    <br>
+                    <p>Here is the content of "key.txt".</p>
+                    <img id="key" src="https://cdn.discordapp.com/attachments/901750608078463026/1220742679676063784/image.png?ex=66100c37&is=65fd9737&hm=c1341b1e374e829d176853874f5428fb74f79ef0a057d142c615f00eb8cdcb37&" height="275" width="700">
+                    <br>
+                    <p>Here is the content of "railtwist", which is only the sole verified hint from the crypto puzzle author.</p>
+                    <img id="railfence" src="https://cdn.discordapp.com/attachments/901750608078463026/1220742824585330779/image.png?ex=66100c59&is=65fd9759&hm=a7253a489d593b743e5c31da5b22e16bf9dcf910d70de3299c4751e5c9bd53f3&" height="275" width="700">
+                    <br>
+
+                    <h4 id="attempt">1st attempt on cryptanalysis</h4>
+                    <p id="attempt-cipher"><b>"cipher.pdf"</b></p>
+                    <img src="https://media.discordapp.net/attachments/901750608078463026/1220746213150949376/image.png?ex=66100f81&is=65fd9a81&hm=dda69a5518da17764c604829f8b3d536c2e33bf1d9eb4348584eaf2feca5ebde&" height="600" width="450">
+                    <p>When the image is clicked, it tries to go to a certain dir. or link in file system highlighted above.</p>
+                    <br>
+                    <img src="https://cdn.discordapp.com/attachments/901750608078463026/1220747129383813160/image.png?ex=6610105c&is=65fd9b5c&hm=6bef8139038a0d10e4e3fe6f82ffdfdd813abfc9b3293ab27e473de16b2e497d&" height="600" width="450">
+                    <p>The existence of this link can be confirmed using HxD or other Hex Editor in the picture above.</p>
+                    <p>The text laid out to be :</p>
+                    <code>
+                        ZVVOHjVONQNAOtxduxvT9j0ONDRSNNFPNG0jttR5NtRNNxRNz5FLO6FUh06TF+1d5fMmpKHW/1k6vz2SPQfozAhXt6yhGTfbV/yHOYx9JQRlrAJozb8JARoAPlKBzBXmGpRsQjVQNDNONxNZhQAAiXsHXaSHI867z1Ub3en4u+xR1QgvShZRgw420HkujpGysmH3f2yY0MUJDGbUPDRejp3YgM6ElIBWEyrENvRN5X193FY2/yhE5l+OkhFc3v56T4AFAocx4T1GxsRUVD0PVDPhX0gv7oBCubtJ1mc5DVT6vi5FrDUyU3x/aF6+am2uvjVtKHZRJsBjy/ijsHP6kZegUStVWZOu/grA3Wz5j4AkGBRPVUe2wNTeXuAEreRAtCKe6rfTvTx3w3Cj1Lkb74PoZxewNvOY05GUlGmeOIGzueFzPukHACWgAS5wxY6tBvElR38tZj==
+                    </code>
+                    <br><br>
+                    <p>First assessment of the extracted text was that it was encoded with Base64 Encoding Algorithm.</p>
+                    <p>Using Base64 Decoding Algorithm, I got this plaintext: </p>
+                    <code>
+                        eUN5N5@:Ü]»Óö=44R4ÑO4m#¶Ôy6ÔM7MÏ‘K;¡T‡N“í]åó&¤¡ÖÿY:¿=’=èÌW·¬¡7ÛWü‡9Œ}%e¬hÍ¿	�>RÌæ”lB5P43N7Y…��‰{]¤‡#Î»ÏUÝéø»ìQÕ/JQƒ6Ðy.Ž‘²²a÷l˜ÐÅ	fÔ<4^ŽØ€Î„”€V*Ä6ôMå}}ÜV6ÿ(Dæ_Ž’\ÞþzO€‡1á=FÆÄTT=T3á_H/î€B¹»IÖg9
+                        Tú¾.E¬52S|h^¾jm®¾5m(vQ&ÀcËø£°sú‘— Q+UY“®þ
+                        ÀÝlù€$OUG¶ÀÔÞ^à­ä@´"žê·Ó½<wÃp£Ô¹ïƒèg°6ó˜Ó‘””iž8³¹ás>é�% .pÅŽ­ñ%G-f
+                    </code>
+                    <br><br>
+                    <p>Knowing that it is not an intelligible plaintext, my first assumption was it is of an Ciphertext output from either : </p>
+                    <ul>
+                        <li>-- Modern Symmetric Algorithm i.e. AES or DES</li>
+                        <li>-- (At that time I thought was far likely but it was) Asymmetric Cipher i.e. RSA or ECC</li>
+                    </ul>
+                    <p>This is because classic Symmetric cipher i.e. Caesar, Vignere, etc. do not produce these kind of Ct output (in which only alphabet chars usually), and the inclusion of other ASCII chars in the plaintext makes me believe that this is 
+                        a ciphertext that must be decrypted using above methods.</p>
+                    <p>However, we are still missing the key, in order to decrypt above Ct; which bring us to the second file.</p>
+                    <br>
+
+                    <p id="attempt-key"><b>"key.txt"</b></p>
+                    <p>From the <a href="#key">image above</a>, it is more or less the same. We have a text that is of Base64 Encoding Algorithm.</p>
+                    <p>The text laid out to be :</p>
+                    <code>
+                        U3bPNI7aqUMlUlLU1l96ElN8LPCJhn34x2KkQGhHeFgjriXVMp2XZXShi6mLYBcBpd2DCNFkXaJztYU+J/dI3w==
+                    </code>
+                    <br><br>
+                    <p>After running the Base64 Decoding Algorithm, I got this plaintext: </p>
+                    <code>
+                        SvП4ЋЪ©C%RRФЦ_zS|,р‰†}шЗb¤@hGxX#®%Х2ќ—etЎ‹©‹`ҐЭѓСd]ўsµ…>'чHЯ
+                    </code>
+                    <br><br>
+                    <p>My first assumption also applied here, that it is also a Ct product of a Modern Cipher algo. that is need to be decrypted first.</p>
+                    <p>Another reason that I said I was focusing on decrypting the above Ct first is because <u>I thought it is some sort of Key Decryption Key (KDK) concept</u>, where the key to decrypt the first Ct
+                        (cipher.pdf) is encrypted with another key in which is in (key.txt). An illustration of my initial plan was this : </p>
+                    <img src="https://cdn.discordapp.com/attachments/901750608078463026/1220760282826018938/image.png?ex=66101c9c&is=65fda79c&hm=3fcbccab21b61793d21b93a51bfdaa7132eb00454c891be211938d0a7068bbc1&" height="275" width="700">
+
+                    <p>Unable to proceed more further, I can only look into the third and last file.</p>
+                    <br>
+
+                    <p id="attempt-railfence"><b>"railfence"</b></p>
+                    <p>From the <a href="#railfence">image above</a>, there are nothing much noting of possible leads.</p>
+                    <code>
+                        0
+                        \n
+                        \n
+                        //* warning this filename has been modified
+                        \n
+                        \n
+                        13
+                        \n
+                        \n
+                    </code>
+                    <br><br>
+                    <p>The content suggested the filename was modified; thus we are discouraged to use railfence cipher.</p>
+                    <p>The only clue here is the numbers (THE NUMBERS MASON WHAT DO THEY MEAN)</p>
+                    <ul>
+                        <li>-- 0</li>
+                        <li>-- 13</li>
+                    </ul>
+                    <p>A suggestion at the time is to use <u>ROT-13 cipher</u> from the number 13. (We will go back to this)</p>
+                    <p>Another suggestion is that from number-letter conversion (A=0, B=1, ...) the 0 - 13 means only choosing the first 13 letters of alphabet? but it was illogical and I do not see this lead going forward.</p>
+                    <br>
+
+                    <h4 id="solution">Post-Init. Cryptanalysis and Official Solution</h4>
+                    <p>At last, I did not manage to break the puzzle with the KDK concept in mind. But I was almost certainly right about the cipher method used on encryption; which is RSA.</p>
+                    <p>From Official Write-up by [redacted], the method is below:</p>
+                    <ul>
+                        <li> -- "String" the PDF on Kali (We have already done this using HxD on Windows, which bring the same result)</li>
+                        <li> -- ROT-13 the string from the "cipher.pdf" 49 times (No need for 49 times, one is enough)</li>
+                        <li> -- Decrypt the key.txt using the Pt of op. above.</li>
+                    </ul>
+                    <p>So actually, these filenames were deceiving us in the first moment we start the cryptanalysis. The "cipher.pdf" - in which we thought denotes Ct, was actually a Key.</p>
+                    <p>And "key.txt" is the ACTUAL Ct. An illustration is given below: </p>
+                    <img src="https://cdn.discordapp.com/attachments/901750608078463026/1220768991266476152/image.png?ex=661024b8&is=65fdafb8&hm=8355afa83d1ae18ea214b41ff3462defe64bb2c17b6634044c6dbbf58a254f0d&" height="275" width="700">
+
+                    <p>This actually made sense because of two reasons:</p>
+                    <ul>
+                        <li>-- RSA private key are longer than RSA public key (The puzzle used RSA-515 (deprecated), and the key size is 460 bytes.)</li>
+                        <li>-- The length of "key.txt" is 88 bytes, in which I realised that I can rule out the possibility of AES / DES (which is capped at max len. of 256-bits (32 Bytes) key size)</li>
+                    </ul>
+                    <p>Now we go to the second step. Actually one time op. is enough since ROTting it twice will give back the same Pt, and in which the first 48th attempts are pointless.</p>
+                    <p>With this method, ROTting the "cipher.pdf" will produce:</p>
+                    <br>
+                    <img src="https://cdn.discordapp.com/attachments/901750608078463026/1220773270819704892/image.png?ex=661028b4&is=65fdb3b4&hm=b1c598ef5ffb5197e6ee2ed3b5656699ac73ea1a7538929023c9c004f0b54c0c&" height="275" width="700">
+                    <code>
+                        MIIBUwIBADANBgkqhkiG9w0BAQEFAASCAT0wggE5AgEAAkEAm5SYB6SHu06GS+1q5sZzcXUJ/1x6im2FCDsbmNuKg6luTGsoI/lUBLk9WDEyeNWbmo8WNEbNCyXOmOKzTcEfDwIDAQABAkAMuDNNvKfUKnFUV867m1Ho3ra4h+kE1DtiFuMEtj420UxhwcTlfzU3s2lL0ZHWQToHCQErwc3LtZ6RyVOJRleRAiEA5K193SL2/luR5y+BxuSp3i56G4NSNbpk4G1TkfEHIQ0CIQCuK0ti7bOPhogW1zp5QIG6iv5SeQHlH3k/nS6+nz2hiwIgXUMEWfOwl/vwfUC6xMrtHFgIJMBh/teN3Jm5w4NxTOECIHr2jAGrKhNRerENgPXr6esGiGk3j3Pw1Yxo74CbMkrjAiBL05THyTzrBVTmhrSmChxUNPJtNF5jkL6gOiRyE38gMw==
+                    </code>
+                    <br><br>
+                    <p>Plugging this value to RSA encryption/decryption tool will return the flag in which is:</p>
+                    <br>
+                    <img src="https://cdn.discordapp.com/attachments/901750608078463026/1220773993561460896/image.png?ex=66102960&is=65fdb460&hm=eb825ecdeee59ad16b6c96c9a0c720c9fd52eec5cb8de589218960918c30a559&" height="600" width="450">
+                    <code>
+                        RWSC{c18af8f24d61d0c55d32972b3b405ac7}
+                    </code>
+                    <br>
+
+                    <h4 id="re-solution">Third-Party Re-production and Verification</h4>
+                    <p>[will continue later]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bottom nav bar -->
+    <nav class="bottom-0 font-mono footer" id="nav2">
+        <div class="container py-4 space-x-2">
+            <br>
+
+            <a class="font-normal space-x-2" href="https://www.facebook.com/r3tr0.02/" style="margin-left: 0;" target="_blank">Facebook</a>&nbsp; &nbsp;
+            
+            <a class="font-normal space-x-2" href="https://instagram.com/retr0.bat" style="margin-left: 0;" target="_blank">Instagram</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="https://x.com/retr0_bat" style="margin-left: 0;" target="_blank">Twitter</a>&nbsp; &nbsp;
+
+            <button id="demo" onclick="discord_id()">Discord</button>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="https://youtube.com/channel/UCg--HMbkAcL8Vs-NphrWqew" style="margin-left: 0;" target="_blank">Youtube</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="https://github.com/r3tr0-02" style="margin-left: 0;" target="_blank">GitHub</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="mailto:amirulfikri@pm.me" style="margin-left: 0;" target="_blank">Email</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="https://www.linkedin.com/in/amirul-fikri" style="margin-left: 0;" target="_blank">LinkedIn</a>&nbsp; &nbsp;
+
+            <a class="font-normal space-x-2" href="/home_qr.html" style="margin-left: 0;" target="_blank">QOTD</a>&nbsp; &nbsp;
+            <br>
+            <span style="font-size: 96px; margin-left: 0;"> retr0.dev </span>
+            <br>
+            <p style="font-size: 10px;">inspirated from kiobu.dev (Thank you kiobu kekw)</p>
+        </div>
+    </nav>
+</body>
+</html>
